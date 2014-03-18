@@ -18,17 +18,20 @@ class RandomPhoto {
                            filterNot(p => p.status.get == Photo.Status.Pending || p.status.get == Photo.Status.Hide).
                            take(size)
 
+  def titleToChapaterSN(page: Page) = page.chapaters.zipWithIndex.toMap
   val pages = randomPhotos.map(_.blogID.get).distinct.map { id => 
     (id, inTransaction{Page(Blog.findByID(id).get)})
   }.toMap
 
   def getChapater(photo: Photo): Int =
   {
-    val chapaters = pages(photo.blogID.get).chapaterToPhotos
+    val page = pages(photo.blogID.get)
+    val pageTitle = page.chapaterToPhotos.
+                mapValues(photos => photos.map(_.id)).
+                filter { case(title, photoIDs) => photoIDs.contains(photo.id) }.
+                keySet.mkString
 
-    chapaters.view.zipWithIndex.filter { case((title, photos), i) =>
-      photos.map(_.id) contains photo.id
-    }.map(_._2).headOption.getOrElse(0)
+    titleToChapaterSN(page)(pageTitle)
   }
 
   def render = {
