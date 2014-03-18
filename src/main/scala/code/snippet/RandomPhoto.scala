@@ -40,7 +40,7 @@ class RandomPhoto {
       
       val username = photo.blogAuthor.map(_.username).getOrElse("")
       val chapater = getChapater(photo)
-      val linkURL = s"/user/${username}/log/${photo.blogID}/chapater/${chapater}"
+      val linkURL = s"/user/${username}/log/${photo.blogID}/chapater/${chapater}#photo-${photo.id}"
 
       ".thumbImage [src]" #> photo.resizedURL(400, 400) &
       "a [href]" #> linkURL

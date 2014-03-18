@@ -89,6 +89,8 @@ class Chapater(chapaterInPage: ChapaterInPage)
     val photoSN = photoIDToSN.get(photo.id).getOrElse(0)
     val editURL = s"$hostAndPath/user/$username/log/${blog.id}/compose?n=${photoSN}"
 
+    ".odd [id]" #> s"photo-${photo.id}" &
+    ".even [id]" #> s"photo-${photo.id}" &
     ".photoTitle *" #> photo.title.get.getOrElse("尚無標題") &
     ".imageLink [href]" #> photo.photoURL &
     ".photoImage [src]" #> photo.thumbnailOrFullImage &
