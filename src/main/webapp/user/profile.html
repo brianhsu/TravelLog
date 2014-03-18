@@ -1,0 +1,68 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title data-lift="UserProfile.title">Travel Log</title>
+    <link rel="stylesheet" type="text/css" href="/assets/semantic-ui/css/semantic.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/index.css" />
+    <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="/assets/semantic-ui/javascript/semantic.js"></script>
+  </head>
+  <body>
+
+    <div class="ui fixed transparent inverted main menu">
+      <div class="container">
+        <a class="item" href="/"><div class="ui header">TravelLog</div></a>
+        <div data-lift="lift:embed?what=usermenu"></div>
+        <div data-lift="lift:embed?what=share"></div>
+      </div>
+    </div>
+
+    <div data-lift="lift:embed?what=notices"></div>
+    <div data-lift="lift:embed?what=ajaxLoader"></div>
+
+    <div class="ui one column page grid login" data-lift="UserProfile">
+      <div class="center aligned profile column">
+        <div class="ui header">
+          <img class="ui avatar image" src="/assets/images/dummy.jpg" />
+          <span class="blogTitle">Blog Title</span>
+        </div>
+        <a href="/log/new" class="ui right floated small orange labeled icon button" id="addBlogButton">
+          <i class="ui add icon"></i>新增遊記
+        </a>
+      </div>
+
+      <div class="column">
+        <div class="ui divided list">
+          <div class="item">
+            <a href="javascript:void(0);" class="right floated ui black button view">觀看</a>
+            <a href="javascript:void(0);" class="right floated ui black button editLink">撰寫</a>
+            <a href="javascript:void(0);" class="right floated ui red button delete">刪除</a>
+
+            <img class="ui rounded small image" src="/assets/images/dummy.jpg" />
+            <div class="content">
+              <div class="ui header">
+                <span>
+                  <span class="title">日本大阪東京跨年行</span> 
+                  <a href="#" class="refreshLink" data-variation="inverted" title="重新同步相簿"><i class="ui right floated small refresh link icon"></i></a>
+                  <a href="#" class="editBlogLink" data-variation="inverted" title="編輯"><i class="ui right floated small edit link icon"></i></a>
+                  <script>
+                    $('.refreshLink').popup();
+                    $('.editBlogLink').popup();
+                  </script>
+                </span>
+              </div>
+              <div class="description">Description</div>
+            </div>
+            <div style="margin:0.5rem; text-align: right">
+              <label class="ui circular label status" style="float: right; margin-top:0.2rem">狀態顯示</label>
+              <label class="ui circular black label tags" style="float: right; margin-top:0.2rem">標籤</label>
+            </div>
+            <div style="clear:both;"></div>
+            <div style="margin:0.5rem; text-align: right">最後更新：<span class="lastUpdated">2013-10-10</span></div>
+
+          </div>
+        </div>        
+      </div>
+    </div>
+  </body>
+</html>

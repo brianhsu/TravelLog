@@ -1,0 +1,74 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>TravelLog</title>
+    <link rel="stylesheet" type="text/css" href="assets/semantic-ui/css/semantic.css" />
+    <link rel="stylesheet" type="text/css" href="assets/index.css" />
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.js"></script>
+    <script src="assets/semantic-ui/javascript/semantic.js"></script>
+  </head>
+  <body>
+    <div class="ui fixed transparent inverted main menu">
+      <div class="container">
+        <a class="item" href="/"><div class="ui header">TravelLog</div></a>
+        <a class="item" href="/about">導覽</a>
+        <div data-lift="lift:embed?what=usermenu"></div>
+      </div>
+    </div>
+
+
+    <div data-lift="lift:embed?what=notices"></div>
+    <div data-lift="lift:embed?what=ajaxLoader"></div>
+
+    <div class="ui inverted page grid masthead">
+      <div class="column">
+        <div class="ui inverted huge header">
+          記錄每一次的冒險
+          <img class="rounded ui right floated image" src="assets/images/book.jpg" width="300" alt="" />
+          <div class="sub header">專為旅人打造的部落格平台</div>
+        </div>
+        <a href="login/" class="ui massive button">立即使用</a>
+      </div>
+    </div>
+    <div class="ui center aligned four column page relaxed grid">
+      <div class="column">
+        <div class="ui icon header">
+          <i class="circular photo icon"></i>
+          以相片為中心
+        </div>
+        <p><a class="ui teal right labeled icon button" href="/about#photo-centeric">MORE <i class="right long arrow icon"></i></a></p>
+      </div>
+      <div class="column">
+        <div class="ui icon header">
+          <i class="circular pencil icon"></i>
+          自動取得相片的資訊
+        </div>
+        <p><a class="ui teal right labeled icon button" href="/about#auto-metadata">MORE <i class="right long arrow icon"></i></a></p>
+      </div>
+      <div class="column">
+        <div class="ui icon header">
+          <i class="circular book icon"></i>
+          優雅的旅行記錄
+        </div>
+        <p><a class="ui teal right labeled icon button" href="/about#clean">MORE <i class="right long arrow icon"></i></a></p>
+      </div>
+      <div class="column">
+        <div class="ui icon header">
+          <i class="circular users icon"></i>
+          與社群網站相結合
+        </div>
+        <p><a class="ui teal right labeled icon button" href="/about#sns">MORE <i class="right long arrow icon"></i></a></p>
+      </div>
+    </div>
+    <div class="ui inverted center aligned relaxed grid segment" id="photo-centeric">
+      <div class="column">
+        <div class="ui header" style="margin-top:2rem;">隨機遊記照片</div>
+        <div data-lift="LazyLoad?template=lazy">
+          <ul class="photoL" data-lift="RandomPhoto?size=8">
+            <li><a href="/assets/images/dummy.jpg" class="thumbLink"><img class="ui rounded image thumbImage" src="/assets/images/dummy.jpg" alt="" /></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

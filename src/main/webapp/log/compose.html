@@ -1,0 +1,239 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title data-lift="ComposeBlog.title">TravelLog</title>
+    <link rel="stylesheet" type="text/css" href="/assets/semantic-ui/css/semantic.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/index.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/lightbox/css/lightbox.css"/>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.js"></script>
+    <script src="/assets/semantic-ui/javascript/semantic.js"></script>
+    <script src="/assets/lightbox/js/lightbox-2.6.min.js"></script>
+    <script src="/assets/epiceditor/js/epiceditor.js"></script>
+    <script src="/assets/javascript/editor.js"></script>
+
+    <script type="text/javascript"
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCdeoWg2wd-BodQWXkhPqcdaPccsumE9oo&amp;sensor=true">
+    </script>
+    <style type="text/css">
+      #map { height: 30rem; width: 100% }
+      #map-canvas { height: 100%; padding: 0px; margin: 0px }
+    </style>
+  </head>
+  <body>
+    <div class="ui fixed transparent inverted main menu">
+      <div class="container">
+        <a class="item" href="/"><div class="ui header">TravelLog</div></a>
+        <div data-lift="lift:embed?what=usermenu"></div>
+        <div class="right menu" style="margin-top: 0.3rem">
+          <a class="launch item" title="顯示所有照片" data-variation="inverted"  onclick="openSidebar();"><i class="ui large list icon"></i></a>
+          <script type="text/javascript">
+            $('.launch.item').popup();
+          </script>
+        </div>
+        <div data-lift="lift:embed?what=ajaxSpinner"></div>
+      </div>
+    </div>
+
+    <div data-lift="lift:embed?what=notices"></div>
+
+    <div class="ui page grid" data-lift="ComposeBlog?form=post">
+      <input type="hidden" id="thumbnailTarget" />
+      <div class="center aligned one column row">
+        <div class="column">
+          <div class="ui steps">
+            <div class="ui step" id="blogTitle">大阪東京跨年自助行</div>
+            <div class="ui step day">第一日</div>
+            <div class="ui step clearable">第二日</div>
+            <div class="ui step clearable">第三日</div>
+            <div class="ui step">完成</div>
+          </div>          
+        </div>
+      </div>
+      <div class="two column row">
+
+        <div class="column">
+          
+          <div class="ui ribbon thumbnail label" id="photoTitle">
+            照片標題 <i class="ui edit icon"></i>
+          </div>
+          <br/>
+          <div class="center-block">
+            <a href="/assets/images/dummy.jpg" data-lightbox="image" title="ImageTitle" id="fullImage"><img class="my-ui frame image" src="/assets/images/dummy.jpg" id="photoImage"/></a>
+            <div style="margin-top: 0.5rem; margin-bottom: -0.2rem"><span id="currentPhoto">1</span> / <span id="totalPhoto">20</span></div>
+          </div>
+
+        </div>
+        <div class="column">
+          <div class="ui form">
+            <div class="field">
+              <label>章節標題 <div style="float: right"><i class="help icon" data-content="系統會自動把同樣章節標題的遊記整合成在一起，您可以自由調整章節標題。" id="help-title" data-variation="inverted"></i>
+</div></label>
+              <div class="ui left labeled icon input">
+                <input placeholder="章節標題" type="text" id="chapater"/>
+                <i class="pencil icon"></i>
+              </div>
+            </div>
+
+            <div class="field">
+              <label>內文（若為空白則這張照片只會出現在相簿中）<div style="float: right">
+                <i class="help icon" data-content="您可以使用 Markdown 語法來排版文章。" id="help-content" data-variation="inverted"></i></div>
+              </label>
+              <textarea id="content" style="display: none"></textarea>
+              <div id="epiceditor" />
+              <input type="hidden" value="" id="epicFile" />
+            </div>
+
+            <div class="field">
+              <label>照片座標 <div style="float: right"><i class="help icon" data-content="您可以按左邊的地球圖示來用 Google Maps 標註您拍照的地點。" id="help-location" data-variation="inverted"></i>
+</div></label>
+              <div class="ui left labeled icon input">
+                <input placeholder="拍照的地點" type="text" id="gps" onclick="showLocationDialog()"/>
+                <i class="globe icon" onclick="showLocationDialog()"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="center aligned one column row">
+        <div class="column">
+          <button class="ui left floated labeled black icon button" id="prevButton">
+            <i class="left arrow icon"></i>上一張
+          </button>
+          <button class="ui right floated right labeled black icon button" id="nextButton">
+            <i class="right arrow icon" id="nextButtonIcon"></i><span id="nextButtonTitle">下一張</span>
+          </button>
+          <button class="ui right floated red button" id="deleteButton">刪除</button>
+        </div>
+      </div>
+      <div style="display: none"> 
+        <img src="/assets/images/dummy.jpg" id="preload"/>
+      </div>
+
+      <div class="ui modal" id="locationDialog">
+        <i class="close icon"></i>
+        <div class="header" id="modalHeader">標記相片地點</div>
+        <div class="content">
+          <div class="ui action input">
+            <input placeholder="地點搜尋" type="text" size="60" id="locationSearch"/>
+            <div class="ui icon button" id="locationSearchButton"><i class="search icon"></i></div>
+          </div>
+          <div id="map">
+            <div id="map-canvas" />
+          </div>
+        </div>
+        <div class="actions">
+          <button class="ui red button" id="deletePos">刪除座標</button>
+          <button class="ui black button">取消</button>
+          <button class="ui positive right labeled icon button" id="confirmButton">
+            確定<i class="checkmark icon"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="ui large vertical inverted labeled icon sidebar transparent menu" id="photoList" data-lift="ComposeBlog.photoList">
+      <div class="item">
+        <i class="inverted circular teal photo icon"></i>
+        <span id="tocTitle">東京日本行</span>
+        <hr/>
+      </div>
+      <div class="borderless item photoItem">
+        <a href="#">
+          <img src="/assets/images/dummy.jpg" alt="" class="photoContent" class="my-ui thumbnail image photoContent"/>
+        </a>
+        <div><i class="ui hide link icon toggleHide" title="切換隱藏狀態"></i></div>
+      </div>
+    </div>
+
+    <script>
+      $('#help-title').popup({});
+      $('#help-content').popup({});
+      $('#help-location').popup({});
+
+      var newPoint = undefined
+      var map = undefined
+      var marker = undefined
+      var geocoder = new google.maps.Geocoder();
+
+
+      function showLocationDialog() {
+        $('#locationDialog').modal('show');
+        $('#deletePos').click(function() { $('#gps').val(''); })
+        $('#confirmButton').click(function() {
+          if (newPoint != undefined) {
+            $('#gps').val(newPoint.lat() + " " + newPoint.lng());
+          }
+        });
+        showMap();
+      }
+
+      function showMap() {
+        var gpsPoint = $('#gps').val().split(" ");
+        var hasLocation = gpsPoint.length == 2;
+        var defaultLat  = hasLocation ? gpsPoint[0] : 24.10;
+        var defaultLong = hasLocation ? gpsPoint[1] : 121.12;
+
+        var mapOptions = {
+          center: new google.maps.LatLng(defaultLat, defaultLong),
+          zoom: hasLocation ? 12 : 7
+        };
+
+        map = new google.maps.Map($("#map-canvas")[0], mapOptions);
+        marker = new google.maps.Marker({position: new google.maps.LatLng(defaultLat, defaultLong)});
+        marker.setMap(map);
+        marker.setDraggable(true);
+        marker.setTitle("托拉這個氣球來標記地點");
+        google.maps.event.addListener(marker, "dragend", function(event) {
+          var point = marker.getPosition();
+          newPoint = point;
+          map.panTo(point);
+        });
+        google.maps.event.addListener(map, 'click', function(event) {
+          newPoint = event.latLng;
+          map.panTo(newPoint);
+          marker.setPosition(newPoint);
+        });
+
+      }
+
+      function setMarker(searchedLocation) {
+        marker.setPosition(searchedLocation);
+        newPoint = searchedLocation;
+        map.panTo(newPoint);
+        map.setZoom(15);
+      }
+      
+      function codeAddress() {
+        var address = $("#locationSearch").val();
+      
+        geocoder.geocode( { 'address': address}, function(results, status) {
+          if (status == google.maps.GeocoderStatus.OK) {
+            setMarker(results[0].geometry.location);
+          } else if (status == google.maps.GeocoderStatus.ZERO_RESULTS) {
+            alert("查無此地");
+          } else {
+            alert("無法取得地點");
+          }
+        });
+      }
+
+      $('#locationSearchButton').click(codeAddress);
+      $('#locationSearch').keypress(function(key) {
+        if (key.keyCode == 13) { codeAddress(); }
+      });
+
+      
+      initEpicEditor("content", $('#epicFile').val());
+
+      function openSidebar() {
+        location.hash = $('#thumbnailTarget').val();
+        $('#photoList').sidebar('toggle');
+      }
+
+      $('#photoList').sidebar({overlay: true});
+
+
+    </script>
+  </body>
+</html>

@@ -1,0 +1,135 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Travel Log</title>
+    <link rel="stylesheet" type="text/css" href="/assets/semantic-ui/css/semantic.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/index.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/lightbox/css/lightbox.css"/>
+    <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="/assets/semantic-ui/javascript/semantic.js"></script>
+    <script src="/assets/lightbox/js/lightbox-2.6.min.js"></script>
+  </head>
+  <body data-lift="ShowPage">
+
+    <div class="ui fixed transparent inverted main menu">
+      <div class="container">
+        <a class="item" href="/"><div class="ui header">TravelLog</div></a>
+        <div class="title item" id="blogTitle"><b>東京日本行</b></div>
+        <a class="icon item" href="#" id="prevButton"><i class="left arrow icon"></i></a>
+        <div class="title item" id="chapaterName">第一天</div>
+        <div class="title item" id="pageNumber">1 / 10</div>
+        <a class="icon item" href="#" id="nextButton"><i class="right arrow icon"></i></a>
+        <div class="item">
+          <a class="ui black label" href="#" id="authorLink">作者：<span id="authorNickname">Author</span></a>
+        </div>
+
+        <div data-lift="lift:embed?what=usermenu"></div>
+
+        <div class="right menu">
+          <a class="launch item" title="顯示章節目錄" onclick="$('#toc').sidebar('toggle')"><i class="ui large book icon"></i></a>
+          <a class="launch item" title="顯示所有照片" onclick="$('#photos').sidebar('toggle')"><i class="ui large photo icon"></i></a>
+
+        </div>
+      </div>
+    </div>
+
+    <div data-lift="lift:embed?what=notices"></div>
+    <div data-lift="lift:embed?what=ajaxLoader"></div>
+
+    <div class="contents" style="margin-top: 2rem">
+
+      <div class="ui page grid noArticle">
+
+        <div class="row" style="margin-bottom: -3rem">
+          <div class="center aligned column">
+            <i class="ui huge circular camera retro icon"></i>
+            <p>這個章節只有照片呢</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="center algined column">
+            <ul class="photoL">
+              <li><a href="/assets/images/dummy.jpg" data-lightbox="all" class="thumbLink"><img class="ui rounded image thumbImage" src="/assets/images/dummy.jpg" alt="" /></a></li>
+              <li><a href="/assets/images/dummy.jpg" data-lightbox="all" class="thumbLink clearable"><img class="ui rounded image thumbImage" src="/assets/images/dummy.jpg" alt="" /></a></li>
+              <li><a href="/assets/images/dummy.jpg" data-lightbox="all" class="thumbLink clearable"><img class="ui rounded image thumbImage" src="/assets/images/dummy.jpg" alt="" /></a></li>
+              <li><a href="/assets/images/dummy.jpg" data-lightbox="all" class="thumbLink clearable"><img class="ui rounded image thumbImage" src="/assets/images/dummy.jpg" alt="" /></a></li>
+              <li><a href="/assets/images/dummy.jpg" data-lightbox="all" class="thumbLink clearable"><img class="ui rounded image thumbImage" src="/assets/images/dummy.jpg" alt="" /></a></li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="ui page two column grid odd">
+        <div class="column">
+          <div class="ui ribbon thumbnail label photoTitle">照片標題</div><br/>
+          <div class="center-block">
+            <a href="/assets/images/dummy.jpg" data-lightbox="article" class="imageLink"><img class="my-ui frame image photoImage" src="/assets/images/dummy.jpg" alt="" /></a>
+          </div>      
+        </div>
+        <div class="column">
+          <!--
+          <div class="my-ui right floated">
+            <div class="ui label"><i class="comment icon"></i> 3</div>
+          </div>
+          -->
+          <div class="article">
+            <h2>出發第一天</h2>
+            <p>時光如水，以超乎想像的速度流失，上一篇的春色早已悄然逝去，在領受完地球百年來不曾有過的高溫焠煉後，日曆又已過了立秋。可恨的是陽光仍然酷烈似火，彷彿所有的思緒，都已被陽光蒸發。 </p>
+            <p>時光如水，以超乎想像的速度流失，上一篇的春色早已悄然逝去，在領受完地球百年來不曾有過的高溫焠煉後，日曆又已過了立秋。可恨的是陽光仍然酷烈似火，彷彿所有的思緒，都已被陽光蒸發。 </p>
+            <p>時光如水，以超乎想像的速度流失，上一篇的春色早已悄然逝去，在領受完地球百年來不曾有過的高溫焠煉後，日曆又已過了立秋。可恨的是陽光仍然酷烈似火，彷彿所有的思緒，都已被陽光蒸發。 </p>
+          </div>
+        </div>
+      </div>
+      <div class="ui inverted page two column grid segment even" id="photo-centeric">
+        <div class="column">
+          <!--
+          <div class="my-ui right floated">
+            <div class="ui label"><i class="comment icon"></i> 3</div>
+          </div>
+          -->
+          <div class="article">
+            <h2>出發第一天</h2>
+            <p>時光如水，以超乎想像的速度流失，上一篇的春色早已悄然逝去，在領受完地球百年來不曾有過的高溫焠煉後，日曆又已過了立秋。可恨的是陽光仍然酷烈似火，彷彿所有的思緒，都已被陽光蒸發。 </p>
+            <p>時光如水，以超乎想像的速度流失，上一篇的春色早已悄然逝去，在領受完地球百年來不曾有過的高溫焠煉後，日曆又已過了立秋。可恨的是陽光仍然酷烈似火，彷彿所有的思緒，都已被陽光蒸發。 </p>
+            <p>時光如水，以超乎想像的速度流失，上一篇的春色早已悄然逝去，在領受完地球百年來不曾有過的高溫焠煉後，日曆又已過了立秋。可恨的是陽光仍然酷烈似火，彷彿所有的思緒，都已被陽光蒸發。 </p>
+          </div>
+        </div>
+        <div class="column">
+          <div class="ui ribbon thumbnail teal label photoTitle">照片標題</div><br/>
+          <div class="center-block">
+            <a href="/assets/images/dummy.jpg" data-lightbox="article" class="imageLink"><img class="my-ui frame image photoImage" src="/assets/images/dummy.jpg" alt="" /></a>
+          </div>      
+        </div>
+      </div>
+    </div>
+    <div class="ui center aligned bottom sidebar inverted page black transparent segment" id="photos">
+      <ul class="photo">
+        <li><a href="/assets/images/dummy.jpg" data-lightbox="all" class="thumbLink"><img class="ui rounded image thumbImage" src="/assets/images/dummy.jpg" alt="" /></a></li>
+        <li><a href="/assets/images/dummy.jpg" data-lightbox="all" class="thumbLink clearable"><img class="ui rounded image thumbImage" src="/assets/images/dummy.jpg" alt="" /></a></li>
+        <li><a href="/assets/images/dummy.jpg" data-lightbox="all" class="thumbLink clearable"><img class="ui rounded image thumbImage" src="/assets/images/dummy.jpg" alt="" /></a></li>
+        <li><a href="/assets/images/dummy.jpg" data-lightbox="all" class="thumbLink clearable"><img class="ui rounded image thumbImage" src="/assets/images/dummy.jpg" alt="" /></a></li>
+        <li><a href="/assets/images/dummy.jpg" data-lightbox="all" class="thumbLink clearable"><img class="ui rounded image thumbImage" src="/assets/images/dummy.jpg" alt="" /></a></li>
+      </ul>
+    </div>
+    <div class="ui large vertical inverted labeled icon sidebar transparent menu" id="toc" >
+      <div class="item">
+        <i class="inverted circular teal book icon"></i>
+        <span id="tocTitle">東京日本行</span>
+        <hr/>
+      </div>
+      <a class="borderless item chapater" href="#">第一天</a>
+      <a class="borderless item clearable" href="#">第二天</a>
+      <a class="borderless item clearable" href="#">第三天</a>
+      <a class="borderless item clearable" href="#">第四天</a>
+      <a class="borderless item clearable" href="#">第五天</a>
+      <a class="borderless item clearable" href="#">第六天</a>
+    </div>
+
+    <script>
+      $('#toc').sidebar({overlay: true});
+      $('#photos').sidebar({overlay: true});
+    </script>
+
+  </body>
+</html>

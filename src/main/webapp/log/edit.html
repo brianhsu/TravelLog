@@ -1,0 +1,75 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title data-lift="EditBlog.title">TravelLog</title>
+    <link rel="stylesheet" type="text/css" href="/assets/semantic-ui/css/semantic.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/index.css" />
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.js"></script>
+    <script src="/assets/semantic-ui/javascript/semantic.js"></script>
+    <script src="/assets/javascript/validation.js"></script>
+    <script src="/assets/epiceditor/js/epiceditor.js"></script>
+    <script src="/assets/javascript/editor.js"></script>
+  </head>
+  <body>
+    <div class="ui fixed transparent inverted main menu">
+      <div class="container">
+        <a class="item" href="/"><div class="ui header">TravelLog</div></a>
+        <div data-lift="lift:embed?what=usermenu"></div>
+        <div data-lift="lift:embed?what=ajaxSpinner"></div>
+      </div>
+    </div>
+
+    <div data-lift="lift:embed?what=notices"></div>
+
+    <div class="ui page grid">
+      <div class="one column row">
+        <div class="column">
+          <form class="ui form" id="add" data-lift="EditBlog?form=post">
+            <div class="field">
+              <label>遊記標題</label>
+              <div class="ui left labeled icon input">
+                <input placeholder="遊記標題" type="text" id="title" />
+                <i class="suitcase icon"></i>
+                <div class="ui corner label">
+                  <i class="icon asterisk"></i>
+                </div>
+              </div>
+            </div>
+            <div class="field">
+              <label>簡述</label>
+              <textarea id="description" style="display: none"></textarea>
+              <div id="epiceditor"></div>
+            </div>
+
+            <div class="field">
+              <label><i class="tags icon"></i> 標籤</label>
+              <input placeholder="標籤" type="text" id="tags" />
+            </div>
+            <button class="ui right floated right labeled black icon button" type="submit">
+              <i class="right arrow icon"></i>完成
+            </button>
+          </form>          
+        </div>
+      </div>
+    </div>
+    <script type="text/javascript">
+
+
+      initEpicEditor("description");
+
+
+      var validations = {
+        "title": {
+          "identifier": "title",
+          "rules": [{
+            "type": "reallyNotEmpty",
+            "prompt": "請輸入遊記標題"
+          }]
+        }
+      }
+      
+      $('#add').form(validations, {"inline": true, "on": "blur"})
+    </script>
+
+  </body>
+</html>

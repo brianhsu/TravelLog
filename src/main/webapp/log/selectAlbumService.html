@@ -1,0 +1,96 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title data-lift="SelectAlbumService.title">TravelLog</title>
+    <link rel="stylesheet" type="text/css" href="/assets/semantic-ui/css/semantic.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/index.css" />
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.js"></script>
+    <script src="/assets/semantic-ui/javascript/semantic.js"></script>
+  </head>
+  <body>
+    <div class="ui fixed transparent inverted main menu">
+      <div class="container">
+        <a class="item" href="/"><div class="ui header">TravelLog</div></a>
+        <div data-lift="lift:embed?what=usermenu"></div>
+      </div>
+    </div>
+
+    <div data-lift="lift:embed?what=notices"></div>
+    <div data-lift="lift:embed?what=ajaxLoader"></div>
+    <div class="ui center aligned one column nobottom grid">
+      <div class="row">
+        <div class="column">
+          <div class="ui steps">
+            <div class="ui step">基本資料</div>
+            <div class="ui active step">選擇相簿</div>
+            <div class="ui step">完成</div>
+          </div>                  
+        </div>
+      </div>
+
+    </div>
+    <div class="ui middle aligned two column page grid" data-lift="SelectAlbumService">
+      <div class="row">
+        <div class="column">
+          <div class="ui ribbon thumbnail label" id="albumTitle">尚未選擇相簿</div><br/>
+          <div class="center-block">
+            <img class="my-ui frame image" src="/assets/images/dummy.jpg" id="albumImage" alt="" />
+          </div>
+        </div>
+        <div class="column">
+          <div class="ui three center aligned column grid">
+            <div class="column">
+              <i class="huge circular google plus link icon" id="selectGoogle"></i>
+              <p>PicasaWeb</p>
+            </div>
+            <div class="column">
+              <i class="huge circular flickr link icon" id="selectFlickr"></i>
+              <p>Flickr</p>
+            </div>
+            <div class="column">
+              <i class="huge circular info link icon" id="selectImgUr" data-content="不支援自動分章節 / 取得 GPS 資料" data-variation="inverted"></i>
+              <p>ImgUr </p>
+            </div>
+            <script>
+              $('#selectImgUr').popup();
+            </script>
+          </div>
+        </div>
+      </div>
+
+      <div id="comet"></div>
+      <div class="row">
+        <div class="ui active striped black progress" style="display: none">
+          <div class="bar"></div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="right floated column">
+          <button class="ui right floated black button" id="okButton">完成</button>
+        </div>
+      </div>
+    </div>
+    <script type="text/javascript">
+    // <![CDATA[[
+      function setProgress(percentage) {
+
+        $(".bar").attr("style", "width:" + percentage + "%");
+
+        if (percentage <= 0) {
+          $(".progress").hide();
+        } else if (percentage >= 100){
+          $(".progress").show();
+          $(".progress").removeClass('active');
+          $(".progress").removeClass('striped');
+          $(".progress").addClass('successful');
+          $("#okButton").removeClass("disabled")
+        } else {
+          $(".progress").show();
+          $("#okButton").addClass("disabled")
+        }
+      }
+    // ]]>
+    </script>
+  </body>
+</html>

@@ -1,0 +1,108 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>TravelLog</title>
+    <link rel="stylesheet" type="text/css" href="assets/semantic-ui/css/semantic.css" />
+    <link rel="stylesheet" type="text/css" href="assets/index.css" />
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.js"></script>
+    <script src="assets/semantic-ui/javascript/semantic.js"></script>
+  </head>
+  <body>
+    <div class="ui fixed transparent inverted main menu">
+      <div class="container">
+        <a class="item" href="/"><div class="ui header">TravelLog</div></a>
+        <a class="item" href="/about">導覽</a>
+        <div data-lift="lift:embed?what=usermenu"></div>
+      </div>
+    </div>
+
+
+    <div data-lift="lift:embed?what=notices"></div>
+    <div data-lift="lift:embed?what=ajaxLoader"></div>
+
+    <div class="ui inverted center aligned four column page grid masthead">
+      <div class="column">
+        <div class="ui icon header">
+          <i class="circular photo icon"></i>
+          以相片為中心
+        </div>
+        <p><a class="ui teal right labeled icon button" href="#photo-centeric">MORE <i class="right long arrow icon"></i></a></p>
+      </div>
+      <div class="column">
+        <div class="ui icon header">
+          <i class="circular pencil icon"></i>
+          自動取得相片的資訊
+        </div>
+        <p><a class="ui teal right labeled icon button" href="#auto-metadata">MORE <i class="right long arrow icon"></i></a></p>
+      </div>
+      <div class="column">
+        <div class="ui icon header">
+          <i class="circular book icon"></i>
+          優雅的旅行記錄
+        </div>
+        <p><a class="ui teal right labeled icon button" href="#clean">MORE <i class="right long arrow icon"></i></a></p>
+      </div>
+      <div class="column">
+        <div class="ui icon header">
+          <i class="circular users icon"></i>
+          與社群網站相結合
+        </div>
+        <p><a class="ui teal right labeled icon button" href="#sns">MORE <i class="right long arrow icon"></i></a></p>
+      </div>
+
+    </div>
+    <div class="ui inverted page grid segment" id="photo-centeric">
+      <div class="column">
+        <div class="center aligned inverted large ui header">
+          以相片為中心
+          <div class="sub header">超級簡單的使用方法！</div>
+        </div>
+        <p class="justify">在 TravelLog 當中，你將會對寫遊記這件事有著全新的觀感，因為我們跳脫了傳統以文字做為遊記中心的方式，改成以照片當做編輯遊記的中心，讓使用者用「看圖說故事」的方式，來撰寫自己的遊記。</p>
+        <p class="justify">若要在 TravelLog 上建立自己的遊記時，你只需要上傳旅途中的照片，並且依著順序寫下自己照下某張相片時的心情，即就可以產生一篇美美的遊記！</p>
+        <p class="justify">在 TravelLog 裡建立遊記非常地簡單，只需要下列幾個簡單的步驟：</p>
+        <div class="ui large four steps">
+          <div class="ui step">建立新遊記</div>
+          <div class="ui step">上傳照片至相簿</div>
+          <div class="ui step">編寫照片註記</div>
+          <div class="ui step">完成</div>
+        </div>
+      </div>
+    </div>
+    <div class="ui page grid" id="auto-metadata">
+      <div class="column">
+        <div class="center aligned large ui header">
+          自動取得相片的資訊
+          <div class="sub header">不用再辛苦找相片網址了！</div>
+        </div>
+        <p class="justify">您可以直接在 TravelLog 匯入 PicasaWeb / Flickr 的相簿，網站就會自動幫你依照日期排列，並且將相同日期的照片歸類在一起，成為遊記中的獨立一頁。您只需要決定某張照片是否要納入遊記中、只保留在相簿內，亦或是直接刪除照片。</p>
+        <p class="justify">目前 TravelLog 支援從以下平台匯入相簿：</p>
+        <div class="ui grid">
+          <div class="four wide center aligned column"><i class="huge icon google plus"></i>PicasaWeb</div>
+          <div class="four wide center aligned column"><i class="huge icon flickr"></i>Flickr</div>
+          <div class="four wide center aligned column" id="imgurIcon" data-content="不支援自動分章節 / 取得 GPS 資料" data-variation="inverted"><i class="huge icon info icon" ></i>ImgUr</div>
+          <script>
+            $('#imgurIcon').popup();
+          </script>
+        </div>
+      </div>
+    </div>
+    <div class="ui inverted page grid segment" id="clean">
+      <div class="column">
+        <div class="center aligned inverted large ui header">
+          優雅的旅行記錄
+          <div class="sub header">不再只有醜醜的部落格！</div>
+        </div>
+        <p class="justify">難得在地球上美麗的角落冒險了一回，自然希望能夠用最漂亮的方式分享給親朋好友。這再也不是夢想了！TravelLog 產生的遊記版面極為簡潔優雅，沒有其他的雜訊，讓您的朋友可以專注在欣賞您曾經歷過的美好事物。</p>
+      </div>
+    </div>
+    <div class="ui page grid" id="sns">
+      <div class="column">
+        <div class="center aligned large ui header">
+          與社群網站相結合
+          <div class="sub header">輕鬆分享！</div>
+        </div>
+        <p class="justify">您可以將自己的遊記透過 Facebook / Google+ / Twitter 或 Plurk 分享給親朋好友，或直接在 TravelLog 上與親朋好友互動。</p>
+      </div>
+    </div>
+  </body>
+</html>

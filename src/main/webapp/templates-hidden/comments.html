@@ -1,0 +1,41 @@
+    <div class="ui modal commentDialog">
+      <i class="close icon"></i>
+      <div class="content">
+        <div class="left" style="margin-right:0.5rem">
+          <ul class="photo" style="margin-left:-3.5rem; padding-right: 2rem">
+            <li>
+              <a class="thumbLink" href="javascript:void()">
+                <img class="ui rounded image thumbImage" alt="" src="/assets/images/dummy.jpg" />
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="right">
+          <div style="max-height: 400px; overflow-x: visible; overflow-y: auto; padding-right: 30px; padding-left:10px" class="commentList">
+            <div class="ui raised segment commentRow" id="commentRow"></div>
+
+            <div class="ui raised segment commentSystem" id="commentSystem">
+              <div class="ui ribbon red label commentUserLink">
+                <img src="http://www.gravatar.com/avatar/qq?d=mm" alt="" class="ui avatar image"/>
+                <span>尚無留言</span>
+              </div>
+              <div><p>快來搶頭香喔！</p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="padding: 1rem; margin: 1rem; margin-bottom:2rem;" class="messageForm">
+        <textarea style="width:100%; margin-bottom: 0.5rem"></textarea>
+        <button class="ui right floated tiny primary button okButton">留言</button>
+      </div>
+      <div style="padding: 1rem; margin: 1rem; margin-bottom:2rem;" class="loginHint">
+        <div>若您想要留言，請先<a href="/login/">登入</a>。</div>
+      </div>
+      <script type="text/javascript">
+        function showDialog(shortID) {
+          $('#commentDialog-' + shortID).modal('show');
+        }
+      </script>
+
+    </div>
+

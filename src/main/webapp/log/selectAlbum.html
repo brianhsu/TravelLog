@@ -1,0 +1,114 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title data-lift="SelectAlbum.title">TravelLog</title>
+    <link rel="stylesheet" type="text/css" href="/assets/semantic-ui/css/semantic.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/index.css" />
+    <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="/assets/semantic-ui/javascript/semantic.js"></script>
+  </head>
+  <body>
+    <div class="ui fixed transparent inverted main menu">
+      <div class="container">
+        <a class="item" href="/"><div class="ui header">TravelLog</div></a>
+        <div data-lift="lift:embed?what=usermenu"></div>
+      </div>
+    </div>
+
+    <div data-lift="lift:embed?what=notices"></div>
+
+    <div class="ui center aligned one column page grid">
+      <div class="row">
+        <div class="column">
+          <div class="ui steps">
+            <div class="ui step">基本資料</div>
+            <div class="ui active step">選擇相簿</div>
+            <div class="ui step">完成</div>
+          </div>                  
+        </div>
+      </div>
+      <div class="row">
+        <div class="center aligned column">
+          <div data-lift="LazyLoad?template=lazy">
+            <div data-lift="SelectAlbum">
+              <div class="ui five connected items">
+                <div class="item">
+                  <div class="image">
+                    <img src="/assets/images/dummy.jpg" alt="" class="albumImage"/>
+                  </div>
+                  <div class="content">
+                    <div class="name">相簿名稱</div>
+                  </div>
+                </div>
+                <div class="item clearable">
+                  <div class="image">
+                    <img src="/assets/images/dummy.jpg" alt="" class="albumImage"/>
+                  </div>
+                  <div class="content">
+                    <div class="name">相簿名稱</div>
+                  </div>
+                </div>
+                <div class="item clearable">
+                  <div class="image">
+                    <img src="http://i.imgur.com/34HCZvo.jpg" alt="" class="albumImage"/>
+                  </div>
+                  <div class="content">
+                    <div class="name">相簿名稱</div>
+                  </div>
+                </div>
+                <div class="item clearable">
+                  <div class="image">
+                    <img src="http://i.imgur.com/34HCZvo.jpg" alt="" class="albumImage"/>
+                  </div>
+                  <div class="content">
+                    <div class="name">相簿名稱</div>
+                  </div>
+                </div>
+                <div class="item clearable">
+                  <div class="image">
+                    <img src="/assets/images/dummy.jpg" alt="" class="albumImage"/>
+                  </div>
+                  <div class="content">
+                    <div class="name">相簿名稱</div>
+                  </div>
+                </div>
+              </div>
+              <div class="ui modal" id="confirmDialog">
+                <i class="close icon"></i>
+                <div class="header" id="modalHeader">相簿名稱</div>
+                <div class="content">
+                  <div class="left">
+                    <img class="ui rounded large image modalImage" src="/assets/images/dummy.jpg" alt="" id="modalImage"/>
+                  </div>
+                  <div class="right">
+                    <div class="ui small header">是否選擇使用此相簿做為遊記的相簿？</div>
+                    <p>相簿日期：<span id="modalDateTime">2013-01-01</span></p>
+                    <p>描述：</p>
+                    <div id="modalDesc">這是去日本遊玩的相簿</div>
+                  </div>
+                </div>
+                <div class="actions">
+                  <button class="ui black button">取消</button>
+                  <button class="ui positive right labeled icon button" id="confirmButton">
+                    確定<i class="checkmark icon"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <script>
+          $("#confirmDialog").modal();
+
+          function showDialog(coverURL, title, dateTime, desc) {
+            $("#modalImage").attr("src", coverURL);
+            $("#modalHeader").text(title);
+            $("#modalDateTime").text(dateTime);
+            $("#modalDesc").text(desc);
+            $("#confirmDialog").modal("show");
+          }
+        </script>
+      </div>
+    </div>
+  </body>
+</html>
