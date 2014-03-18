@@ -1,0 +1,124 @@
+TravelLog
+===================
+
+TravelLog 是我在 2013 年底進行日本聖誕／新年參拜十日遊前實作的遊記撰寫網站，跳脫了傳統以文字做為遊記中心的方式，改成以照片當做編輯遊記的中心，讓我自己可以用「看圖說故事」的方式，來撰寫自己的遊記。
+
+您可以在 http://travellog.twbbs.org/ 這個網站，看到我利用這個網站應用程式寫撰寫的遊記。
+
+和我寫的其他的網站應用一樣，這個專案是用 Scala / Lift Web Framework 所實作。
+
+基本需求
+---------
+
+1. Java 1.6
+2. SBT (Simple Build Tool) 建置軟體
+3. PostgresSQL 資料庫伺服器
+4. ImgUr / Flickr / PicasaWeb 的 OAuth API Key / Secret
+
+安裝步驟
+---------
+
+1. 安裝 [SBT][01].
+
+2. 從 GitHub clone 這個專案到自己的電腦上
+
+    ```
+    $ git clone --branch develop git://github.com/brianhsu/TravelLog.git TravelLog
+    ```
+
+3. 使用 SBT 執行 org.travellog.installer.Insteller 來設定資料庫連線
+
+    ```
+    $ cd TravelLog
+    $ sbt
+    [info] Loading project definition from /home/brianhsu/ss/TravelLog/project
+    [info] Set current project to TravelLog (in build file:/home/brianhsu/ss/TravelLog/)
+    > run-main org.travellog.installer.Insteller
+    > exit
+    ```
+
+5. 使用 SBT 執行 org.travellog.installer.DBCreator 來建立資料庫
+
+    ```
+    $ sbt
+    [info] Loading project definition from /home/brianhsu/ss/TravelLog/project
+    [info] Set current project to TravelLog (in build file:/home/brianhsu/ss/TravelLog/)
+    > run-main org.travellog.installer.DBCreator
+    > exit
+    ```
+
+6. 在 SBT 中使用 ``container:start`` 啟動 Jetty 伺服器
+
+    ```
+    $ sbt
+    [info] Loading project definition from /home/brianhsu/TravelLog/project
+    [info] Set current project to TravelLog (in build file:/home/brianhsu/TravelLog/)
+    > container:start
+    ```
+
+7. 瀏覽 [http://localhost:8081/](http://localhost:8081/)
+
+
+TravelLog Web App
+========================
+
+TravelLog is a blogging system designed for travel, I wrote it in the end of year 2013 to make sure that I would have a great tool to write my travel notes after went to Japan during my Cristmas vacation.
+
+You could upload your photos to public album service like ImgUr / Flickr / PicasaWeb, then create a blog using these photo in TravelLog very easily.
+
+Check out what it looks like at http://travellog.twbbs.org/
+
+It's based on Scala / Lift Webframework.
+
+Prerequisite
+--------------
+
+1. Java 1.6
+2. SBT (Simple Build Tool)
+3. PostgresSQL DBMS
+
+
+Installation
+--------------
+
+1. Install [SBT][01].
+
+2. Clone this project from GitHub.
+
+    ```
+    $ git clone --branch develop git://github.com/brianhsu/TravelLog.git TravelLog
+    ```
+
+3. Configure your TravelLog DB settings by the following commands:
+
+    ```
+    $ cd TravelLog
+    $ sbt
+    [info] Loading project definition from /home/brianhsu/ss/TravelLog/project
+    [info] Set current project to TravelLog (in build file:/home/brianhsu/ss/TravelLog/)
+    > run-main org.travellog.installer.Insteller
+    > exit
+    ```
+
+5. Create DB schema.
+
+    ```
+    $ sbt
+    [info] Loading project definition from /home/brianhsu/ss/TravelLog/project
+    [info] Set current project to TravelLog (in build file:/home/brianhsu/ss/TravelLog/)
+    > run-main org.travellog.installer.DBCreator
+    > exit
+    ```
+
+6. Run SBT, and enter ``container:start`` to start Jetty server.
+
+    ```
+    $ sbt
+    [info] Loading project definition from /home/brianhsu/TravelLog/project
+    [info] Set current project to TravelLog (in build file:/home/brianhsu/TravelLog/)
+    > container:start
+    ```
+
+7. Visit [http://localhost:8081/](http://localhost:8081/)
+
+[01]: http://www.scala-sbt.org/
