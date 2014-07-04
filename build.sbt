@@ -1,6 +1,6 @@
 name := "TravelLog"
 
-version := "0.16"
+version := "0.17"
 
 scalaVersion := "2.10.3"
 
@@ -16,7 +16,7 @@ libraryDependencies ++= Seq(
   "javax.servlet" % "servlet-api" % "2.5" % "provided",
   "org.eclipse.jetty" % "jetty-webapp" % "8.0.1.v20110908" % "container",
   "org.scribe" % "scribe" % "1.3.5",
-  "org.bone" %% "sphotoapi" % "0.4",
+  "org.bone" %% "sphotoapi" % "0.4.2",
   "org.postgresql" % "postgresql" % "9.3-1100-jdbc41",
   "org.pegdown" % "pegdown" % "1.4.1",
   "com.sksamuel.scrimage" % "scrimage-core_2.10" % "1.3.11"
